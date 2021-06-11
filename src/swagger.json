@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.0",
+  "title": "Introduction of SOLID",
+  "description": "Practing the techniques used by SOLID's concepts",
+  "contact": {
+    "name": "Vitor Franco",
+    "email": "vitoroliveirafranco@gmail.com"
+  },
+  "info": {
+    "version": "3.0.0", 
+    "title": "My system CRUD of Users",
+    "description": "API for management of users",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "Development server"
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "version": "1.0.0",
+  "paths": {
+    "/users": {
+      "get": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "headers",
+            "description": "get all user info."
+          }
+        ],
+        "tags": ["Users"],
+        "summary": "List all users.",
+        "responses": {
+          "200": {
+            "description": "List of users"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "name",
+            "in":"body"
+          },
+          {
+            "name": "email",
+            "in":"body"
+          }
+        ],
+        "tags": ["Users"],
+        "summary": "Create user",
+        "responses": {
+          "201": {
+            "description": "user Created"
+          }
+        }
+      }
+    },
+    "/users/{user_id}":{
+      "get": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "params"
+          }
+        ],
+        "tags": ["Users"],
+        "summary": "Get info of one user",
+        "responses": {
+          "201": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/{user_id}/admin":{
+      "patch": {
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "params"
+          }
+        ],
+        "tags": ["Users"],
+        "summary": "Turn a default user specs of admin",
+        "responses": {
+          "201": {
+            "description": "User with permissions of admin"
+          }
+        }
+      }
+    }
+  }
+}
